@@ -1,0 +1,217 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/z5W5_uA3Vz2Og7S44Du2QDFRGA0\"",
+ "discoveryVersion": "v1",
+ "id": "evenementsendpoint:v1",
+ "name": "evenementsendpoint",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "flappyville",
+ "ownerName": "flappyville",
+ "packagePath": "services",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://flappyville.appspot.com/_ah/api/evenementsendpoint/v1/",
+ "basePath": "/_ah/api/evenementsendpoint/v1/",
+ "rootUrl": "https://flappyville.appspot.com/_ah/api/",
+ "servicePath": "evenementsendpoint/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "CollectionResponse_Evenements": {
+   "id": "CollectionResponse_Evenements",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Evenements"
+     }
+    },
+    "nextPageToken": {
+     "type": "string"
+    }
+   }
+  },
+  "Evenements": {
+   "id": "Evenements",
+   "type": "object",
+   "properties": {
+    "adresse": {
+     "type": "string"
+    },
+    "date": {
+     "type": "string"
+    },
+    "heure": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "nbplayers": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "titre": {
+     "type": "string"
+    },
+    "ville": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "getEvenements": {
+   "id": "evenementsendpoint.getEvenements",
+   "path": "evenements/{id}",
+   "httpMethod": "GET",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64",
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "response": {
+    "$ref": "Evenements"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "insertEvenements": {
+   "id": "evenementsendpoint.insertEvenements",
+   "path": "evenements",
+   "httpMethod": "POST",
+   "request": {
+    "$ref": "Evenements",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "Evenements"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "listEvenements": {
+   "id": "evenementsendpoint.listEvenements",
+   "path": "evenements",
+   "httpMethod": "GET",
+   "parameters": {
+    "cursor": {
+     "type": "string",
+     "location": "query"
+    },
+    "limit": {
+     "type": "integer",
+     "format": "int32",
+     "location": "query"
+    }
+   },
+   "response": {
+    "$ref": "CollectionResponse_Evenements"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "removeEvenements": {
+   "id": "evenementsendpoint.removeEvenements",
+   "path": "evenements/{id}",
+   "httpMethod": "DELETE",
+   "parameters": {
+    "id": {
+     "type": "string",
+     "required": true,
+     "format": "int64",
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "id"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "updateEvenements": {
+   "id": "evenementsendpoint.updateEvenements",
+   "path": "evenements",
+   "httpMethod": "PUT",
+   "request": {
+    "$ref": "Evenements",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "Evenements"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}

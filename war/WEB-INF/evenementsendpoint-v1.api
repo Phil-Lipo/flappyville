@@ -1,0 +1,213 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://flappyville.appspot.com/_ah/api",
+  "name" : "evenementsendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://flappyville.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "flappyville",
+  "ownerName" : "flappyville",
+  "packagePath" : "services",
+  "methods" : {
+    "evenementsendpoint.getEvenements" : {
+      "path" : "evenements/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "flappyville.EvenementsEndpoint.getEvenements",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "evenementsendpoint.insertEvenements" : {
+      "path" : "evenements",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "flappyville.EvenementsEndpoint.insertEvenements",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "evenementsendpoint.removeEvenements" : {
+      "path" : "evenements/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "flappyville.EvenementsEndpoint.removeEvenements",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "evenementsendpoint.listEvenements" : {
+      "path" : "evenements",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "flappyville.EvenementsEndpoint.listEvenements",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "evenementsendpoint.updateEvenements" : {
+      "path" : "evenements",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "flappyville.EvenementsEndpoint.updateEvenements",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Evenements" : {
+        "id" : "Evenements",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "titre" : {
+            "type" : "string"
+          },
+          "adresse" : {
+            "type" : "string"
+          },
+          "ville" : {
+            "type" : "string"
+          },
+          "heure" : {
+            "type" : "string"
+          },
+          "date" : {
+            "type" : "string"
+          },
+          "inscriptions" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "nbplayers" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "CollectionResponse_Evenements" : {
+        "id" : "CollectionResponse_Evenements",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Evenements"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "flappyville.EvenementsEndpoint.getEvenements" : {
+        "response" : {
+          "$ref" : "Evenements"
+        }
+      },
+      "flappyville.EvenementsEndpoint.insertEvenements" : {
+        "request" : {
+          "$ref" : "Evenements"
+        },
+        "response" : {
+          "$ref" : "Evenements"
+        }
+      },
+      "flappyville.EvenementsEndpoint.removeEvenements" : {
+      },
+      "flappyville.EvenementsEndpoint.listEvenements" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Evenements"
+        }
+      },
+      "flappyville.EvenementsEndpoint.updateEvenements" : {
+        "request" : {
+          "$ref" : "Evenements"
+        },
+        "response" : {
+          "$ref" : "Evenements"
+        }
+      }
+    }
+  }
+}
